@@ -6,18 +6,18 @@ const app = express();
 
 //we don't able to sent any data to our db without calling this
 app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 
 app.get('/blogtest', (req, res) => {
   res.json('it works');
 });
 
-app.listen(8080, () => {
+app.listen(8800, () => {
   console.log('Connected');
 });
-
-
-
 
 // 1. Define System. Write different types of systems.
 // 2. What is SDLC? Describe each phase of SDLC.
