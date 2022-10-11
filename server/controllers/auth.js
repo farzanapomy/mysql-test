@@ -1,5 +1,5 @@
-import { db } from "../db.js";
-import bcrypt from "bcryptjs";
+import { db } from '../db.js';
+import bcrypt from 'bcryptjs';
 
 export const register = (req, res) => {
   //CHECK EXISTING USER
@@ -7,7 +7,7 @@ export const register = (req, res) => {
 
   db.query(q, [req.body.email, req.body.username], (err, data) => {
     if (err) return res.status(500).json(err);
-    if (data.length) return res.status(409).json("User already exists!");
+    // if (data.length) return res.status(409).json("User already exists!");
 
     //Hash the password and create a user
     const salt = bcrypt.genSaltSync(10);
@@ -23,4 +23,4 @@ export const register = (req, res) => {
   });
 };
 export const login = (req, res) => {};
-export const logOut = (req, res) => {};
+// export const logOut = (req, res) => {};
